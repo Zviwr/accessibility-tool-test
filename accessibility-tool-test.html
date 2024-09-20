@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>כלי נגישות לניסיון</title>
+    <style>
+        body {
+            font-size: 16px;
+            transition: all 0.3s ease-in-out;
+        }
+        .accessibility-panel {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #f1f1f1;
+            border: 1px solid #ccc;
+            padding: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+        .btn {
+            display: block;
+            margin: 5px 0;
+            padding: 10px;
+            text-align: center;
+            background: #007bff;
+            color: #fff;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+        }
+        .high-contrast {
+            background-color: #000;
+            color: #fff;
+        }
+        .highlight-links a {
+            background-color: yellow;
+        }
+        .large-cursor {
+            cursor: url('https://cdn-icons-png.flaticon.com/512/126/126402.png'), auto;
+        }
+        .hidden-images img {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="accessibility-panel">
+    <button class="btn" onclick="changeFontSize(1)">הגדלת טקסט</button>
+    <button class="btn" onclick="changeFontSize(-1)">הקטנת טקסט</button>
+    <button class="btn" onclick="toggleContrast()">היפוך צבעים</button>
+    <button class="btn" onclick="highlightLinks()">הדגשת קישורים</button>
+    <button class="btn" onclick="toggleCursor()">הגדלת סמן</button>
+    <button class="btn" onclick="toggleImages()">הסתרת תמונות</button>
+    <button class="btn" onclick="resetAccessibility()">איפוס</button>
+</div>
+
+<p style="color: black;">טקסט ניסיון לבדיקת כלי נגישות</p>
+<p style="color: yellow;">טקסט ניסיון לבדיקת כלי נגישות</p>
+<p style="color: red;">טקסט ניסיון לבדיקת כלי נגישות</p>
+
+<script>
+    function changeFontSize(factor) {
+        document.body.style.fontSize = (parseInt(window.getComputedStyle(document.body).fontSize) + factor) + 'px';
+    }
+
+    function toggleContrast() {
+        document.body.classList.toggle('high-contrast');
+    }
+
+    function highlightLinks() {
+        document.body.classList.toggle('highlight-links');
+    }
+
+    function toggleCursor() {
+        document.body.classList.toggle('large-cursor');
+    }
+
+    function toggleImages() {
+        document.body.classList.toggle('hidden-images');
+    }
+
+    function resetAccessibility() {
+        document.body.style.fontSize = '16px';
+        document.body.classList.remove('high-contrast', 'highlight-links', 'large-cursor', 'hidden-images');
+    }
+</script>
+
+</body>
+</html>
